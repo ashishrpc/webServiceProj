@@ -23,6 +23,7 @@ public class CalculatorClass {
 	}
 	/*
 	 * http://localhost:8080/WebServiceProj/rest/calc/add;a=5;b=5
+	 * good
 	 */
 	@GET @Path("/add")
 	@Produces("text/plain")
