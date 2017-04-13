@@ -32,7 +32,9 @@ public class MoviesClass {
 	
 	@Autowired(required=false)
 	MyMoviesDataDAO myMoviesDataDAO;
-	
+	/*
+	 * http://localhost:8080/WebServiceProj/rest/movies/all
+	 */
 	@GET @Path("/all") @Produces(MediaType.APPLICATION_JSON)
 	public Response getAllMovies(){
 		ResponseVO<List<MoviesVO>> responseVO = new ResponseVO<List<MoviesVO>>("200", "List Of Movies", myMoviesDataDAO.getAllMoviesList());
@@ -44,7 +46,10 @@ public class MoviesClass {
 		ResponseVO<MoviesVO> responseVO = new ResponseVO<MoviesVO>("200", "Movies Found", myMoviesDataDAO.getMoviesById(new MoviesVO(id)));
 		return Response.ok(responseVO).build();
 	}
-
+	/*
+	 * http://localhost:8080/WebServiceProj/rest/movies/add/
+	 * {"id":"102","name":"Kuch-2 Hota Hai","language":"Hindi","nation":"India","year":"2001","rating":"2.5"}
+	 */
 	@POST @Path("/add") @Produces(MediaType.APPLICATION_JSON) @Consumes(MediaType.APPLICATION_JSON)
 	public Response addMovies(final MoviesVO moviesVO){
 		ResponseVO<MoviesVO> responseVO = new ResponseVO<MoviesVO>("200", "Movies Added", myMoviesDataDAO.addMovies(moviesVO));

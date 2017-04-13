@@ -21,20 +21,27 @@ public class CalculatorClass {
 	public CalculatorClass() {
 		System.out.println("CalculatorClass :: New Object ");
 	}
-
+	/*
+	 * http://localhost:8080/WebServiceProj/rest/calc/add;a=5;b=5
+	 */
 	@GET @Path("/add")
 	@Produces("text/plain")
 	public Response add(@MatrixParam("a")int a, @MatrixParam("b")int b){
 		return Response.ok().entity(String.valueOf(a+b)).build();
 	}
 	
-	
+	/*
+	 * http://localhost:8080/WebServiceProj/rest/calc/sub;a=15;b=5
+	 */
 	@GET @Path("/sub")
 	@Produces("text/plain")
 	public Response sub(@MatrixParam("a")int a, @MatrixParam("b")int b){
 		return Response.ok().entity(String.valueOf(a-b)).build();
 	}
-	
+	/*
+	 * http://localhost:8080/WebServiceProj/rest/calc/
+	 * {"num1":"2","num2":"2","operation":"+"}
+	 */
 	@Path("/") @POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
